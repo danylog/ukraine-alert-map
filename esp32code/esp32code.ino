@@ -12,59 +12,46 @@
 
 #include <HTTPClient.h>
 
-#define USE_SERIAL Serial
+#include "env.h"
 
-WiFiMulti wifiMulti;
+#include <WiFiManager.h>
+
+WiFiManager wm;
+String url;
 
 void setup() {
+  wm.autoConnect("AutoConnectAP");  // password protected ap
 
-    USE_SERIAL.begin(115200);
+  url = "https://api.alerts.in.ua/v1/iot/active_air_raid_alerts_by_oblast.json?token=" + api_token;
 
-    USE_SERIAL.println();
-    USE_SERIAL.println();
-    USE_SERIAL.println();
-
-    for(uint8_t t = 4; t > 0; t--) {
-        USE_SERIAL.printf("[SETUP] WAIT %d...\n", t);
-        USE_SERIAL.flush();
-        delay(1000);
-    }
-
-    wifiMulti.addAP("FRITZ!Box 6690 XN", "06976126518652350248");
-
+  Serial.begin(115200);
 }
 
 void loop() {
-    // wait for WiFi connection
-    if((wifiMulti.run() == WL_CONNECTED)) {
+  if (WiFi.status() == WL_CONNECTED) {
 
-        HTTPClient http;
+    HTTPClient http;
 
-        USE_SERIAL.print("[HTTP] begin...\n");
-        // configure traged server and url
-        //http.begin("https://www.howsmyssl.com/a/check", ca); //HTTPS
-        http.begin("https://api.alerts.in.ua/v1/iot/active_air_raid_alerts_by_oblast.json?token="); //HTTP
+    Serial.print("[HTTP] begin...\n");
 
-        USE_SERIAL.print("[HTTP] GET...\n");
-        // start connection and send HTTP header
-        int httpCode = http.GET();
+    http.begin(url);
 
-        // httpCode will be negative on error
-        if(httpCode > 0) {
-            // HTTP header has been send and Server response header has been handled
-            USE_SERIAL.printf("[HTTP] GET... code: %d\n", httpCode);
+    Serial.print("[HTTP] GET...\n");
+    int httpCode = http.GET();
 
-            // file found at server
-            if(httpCode == HTTP_CODE_OK) {
-                String payload = http.getString();
-                USE_SERIAL.println(payload);
-            }
-        } else {
-            USE_SERIAL.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
-        }
+    if (httpCode > 0) {
+      Serial.printf("[HTTP] GET... code: %d\n", httpCode);
 
-        http.end();
+      if (httpCode == HTTP_CODE_OK) {
+        String payload = http.getString();
+        Serial.println(payload);
+      }
+    } else {
+      Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
     }
 
-    delay(10000);
+    http.end();
+  }
+
+  delay(10000);
 }
