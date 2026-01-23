@@ -2,7 +2,7 @@
 
 This project uses an ESP32 development board and 25 WS2812B LEDs to display real-time air raid alerts for each region in Ukraine. Alert data is fetched from the [alerts.in.ua](https://alerts.in.ua) API.
 
-The device is still in development, further upgrades will be added
+The device is still in development; further upgrades will be added.
 
 <img width="2566" height="1924" alt="image" src="https://github.com/user-attachments/assets/d5c81af3-9ea2-42e1-a451-2b4ca09acd7f" />
 
@@ -15,9 +15,9 @@ The device is still in development, further upgrades will be added
 
 2. **Configure your credentials**: Create an `env.h` file in the `esp32code` folder and add your API key following the [example](env_example.h).
 
-3. Install the necessary libraries: 
-   1. [WiFi Manager](https://github.com/tzapu/WiFiManager)
-   2. [WS2812FX](https://github.com/kitesurfer1404/WS2812FX)
+3. **Install the necessary libraries:**
+   - [WiFi Manager](https://github.com/tzapu/WiFiManager)
+   - [WS2812FX](https://github.com/kitesurfer1404/WS2812FX)
 
 4. **Upload to your ESP32** using the Arduino IDE. I used an [AZDelivery ESP32 with CP2102](https://www.amazon.de/dp/B08BTWJGFX), but any ESP32 board should work.
 
@@ -45,18 +45,18 @@ The wiring is straightforward. [WS2812B LEDs](https://www.amazon.de/dp/B088K8DVM
 
 > **Note:** Use sufficiently thick wires for 5V and GND to prevent voltage drop on the LEDs at the end of the chain.
 
-### 3D printing
+### 3D Printing
 
-To make the casing you will need 2 types of filament: an opaque one (I used Black PLA) for the back and a Translucent (I used Natural PETG) for the 25 Regions. You can download all the files from my [Printables page]()
+To make the casing, you will need two types of filament: an opaque one (I used black PLA) for the back and a translucent one (I used natural PETG) for the 25 regions. You can download all the files from my [Printables page](https://www.printables.com/model/1567498-esp32-ukraine-air-alert-map-v01)
 
 ### Assembly
 
 <img width="2566" height="1924" alt="image" src="https://github.com/user-attachments/assets/e6e3bd48-f4a0-4485-955a-50fb2b1dfe94" />
 
 
-1. Once you have the LEDs soldered and the casing printed, first glue the opaque parts together, to make a map of Ukraine. Epoxy 2-component resin works the best here.
+1. Once you have the LEDs soldered and the casing printed, glue the opaque parts together to form the map of Ukraine. Two-component epoxy resin works best here.
 
-2. Glue the LEDs into their respective holes, following the order of the regions, as in the image or this list:
+2. Glue the LEDs into their respective holes, following the order of the regions as shown in the image or the list below:
 
 ```
 1. Crimea Autonomous Republic
@@ -86,26 +86,26 @@ To make the casing you will need 2 types of filament: an opaque one (I used Blac
 25. Lviv Oblast
 ```
 
-> **Tip:** To use a different order, simply change the const regions list in the code. Simply replace the entries.
+> **Tip:** To use a different order, simply change the `regions` list in the code.
 
-3. Now glue the traslucent Regions and the ESP32 board in the back.
+3. Glue the translucent regions and mount the ESP32 board on the back.
 
 <img width="2566" height="1924" alt="image" src="https://github.com/user-attachments/assets/cf23af14-fe47-43cc-a30e-ccc943bdd9a3" />
 
 
-### First power-on
+### First Power-On
 
-The first time you turn the device on, it will create a Wifi AP, where you need to connect with another device (phone or laptop). After this, a web interface will appear, where you'll need to select and add your home WiFi network. Follow the instructions of the portal. 
+The first time you turn on the device, it will create a WiFi access point. Connect to it with another device (phone or laptop). A web interface will appear where you can select and add your home WiFi network. Follow the instructions in the portal.
 
-After that, the device will connect automatically each time to your network and receive the latest air alert data every 10 seconds and light the regions.
-
-
+After that, the device will automatically connect to your network each time and fetch the latest air alert data every 10 seconds to light up the regions.
 
 
 
-## Planned upgrades
 
-V1: An improvement, still designed as a wall decoration
+
+## Planned Upgrades
+
+### V1: Improved Wall Decoration
 - [ ] Migrate to PlatformIO
 - [ ] Add settings to the captive portal
 - [ ] Add light indication of issues (wifi disconnected, API error codes)
@@ -118,7 +118,7 @@ V1: An improvement, still designed as a wall decoration
 - [ ] Google Home and Alexa integration
 - [ ] OTA updates
 
-V2: A smaller map with power from a Lipo battery for events:
+### V2: Portable Version with LiPo Battery
 - [ ] Research Microcontroller alternatives (STM32 + Wifi Module, ESP8266)
 - [ ] Try out different LED configurations
   - [ ] Improve the light dissipation (light chamber, edge lighting, etc.)
