@@ -2,7 +2,10 @@
 
 This project uses an ESP32 development board and 25 WS2812B LEDs to display real-time air raid alerts for each region in Ukraine. Alert data is fetched from the [alerts.in.ua](https://alerts.in.ua) API.
 
-This project is in development, further uogrades will be added
+The device is still in development, further upgrades will be added
+
+<img width="2566" height="1924" alt="image" src="https://github.com/user-attachments/assets/d5c81af3-9ea2-42e1-a451-2b4ca09acd7f" />
+
 
 ## Setup Guide
 
@@ -48,6 +51,9 @@ To make the casing you will need 2 types of filament: an opaque one (I used Blac
 
 ### Assembly
 
+<img width="2566" height="1924" alt="image" src="https://github.com/user-attachments/assets/e6e3bd48-f4a0-4485-955a-50fb2b1dfe94" />
+
+
 1. Once you have the LEDs soldered and the casing printed, first glue the opaque parts together, to make a map of Ukraine. Epoxy 2-component resin works the best here.
 
 2. Glue the LEDs into their respective holes, following the order of the regions, as in the image or this list:
@@ -83,6 +89,9 @@ To make the casing you will need 2 types of filament: an opaque one (I used Blac
 > **Tip:** To use a different order, simply change the const regions list in the code. Simply replace the entries.
 
 3. Now glue the traslucent Regions and the ESP32 board in the back.
+
+<img width="2566" height="1924" alt="image" src="https://github.com/user-attachments/assets/cf23af14-fe47-43cc-a30e-ccc943bdd9a3" />
+
 
 ### First power-on
 
