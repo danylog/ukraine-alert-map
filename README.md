@@ -7,6 +7,52 @@ The device is still in development; further upgrades will be added.
 <img width="2566" height="1924" alt="image" src="https://github.com/user-attachments/assets/d5c81af3-9ea2-42e1-a451-2b4ca09acd7f" />
 
 
+## Requirements
+
+### Functional Requirements
+
+#### Data & Connectivity
+- [x] Fetch alert data from the alerts.in.ua API
+- [x] Automatically connect to a configured WiFi network on startup
+- [x] Provide a captive portal for initial WiFi configuration
+- [ ] Add settings to the captive portal (brightness, update interval, etc.)
+- [ ] Visual indication of connectivity issues (WiFi disconnected, API errors)
+- [ ] Support OTA (over-the-air) firmware updates
+- [ ] Google Home and Alexa integration
+
+#### Display & Indication
+- [x] Display real-time air raid alert status for all 25 regions of Ukraine
+- [x] Indicate active alerts with distinct LED colors/effects per region
+- [ ] Adjustable LED brightness (physical control or mobile app)
+- [ ] Support for additional regions (Kyiv city, Sevastopol)
+- [ ] Improved light dissipation per region
+
+#### Hardware (V2 - Portable)
+- [ ] Battery-powered operation with LiPo
+- [ ] Battery charging circuit
+- [ ] OLED display for settings and information
+- [ ] Rotary encoder for physical controls
+- [ ] Custom PCB design
+
+### Non-Functional Requirements
+
+#### Performance
+- [x] Update alert status at least every 10 seconds
+- [x] Operate continuously without manual intervention
+
+#### Usability
+- [x] Compact form factor for wall mounting or desk display
+- [ ] Tool-less assembly (screws or snap-fit joints instead of glue)
+- [ ] Improved 3D model based on better SVG source map
+
+#### Maintainability
+- [ ] Migrate codebase to PlatformIO
+- [ ] Modular code structure for easy feature additions
+
+#### Power
+- [x] Low power consumption suitable for always-on USB operation
+- [ ] Battery life optimization for portable version
+
 ## Setup Guide
 
 ### Code (Arduino IDE)
